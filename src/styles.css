@@ -419,6 +419,12 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
+.workshop-hours {
+  color: #344d5e;
+  font-size: 12px;
+  line-height: 1.45;
+  margin: 8px 0 0;
+}
 .workshop-card ul {
   list-style: none;
   padding: 0;
@@ -525,6 +531,14 @@ img {
   line-height: 1.5;
   font-size: 14px;
 }
+.about-evidence {
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+.about-evidence a {
+  color: #1d5e8a;
+  font-weight: 800;
+}
 .about-callout {
   margin-top: 15px;
   display: flex;
@@ -556,6 +570,18 @@ img {
   background: #071d32;
   color: #fff;
 }
+.speedometer-frame {
+  background: #fff;
+  padding: 18px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.speedometer-frame img {
+  display: block;
+  width: min(100%, 680px);
+  height: auto;
+  margin: auto;
+}
 .gauge-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -585,6 +611,23 @@ img {
   font-size: 14px;
   line-height: 1.55;
   margin: 0;
+}
+.gauge-source {
+  display: inline-block;
+  color: #ff9a5e;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 16px;
+}
+.gauge-guidance {
+  color: #a9bdca;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 19px 0 0;
+}
+.gauge-guidance a {
+  color: #ff9a5e;
+  text-decoration: underline;
 }
 .gauge-bottom {
   display: flex;
@@ -858,6 +901,42 @@ img {
   font-weight: 800;
   text-transform: uppercase;
 }
+.directory-topics {
+  background: #fff;
+  border: 1px solid #e0e7e9;
+  padding: 25px;
+  margin-bottom: 35px;
+}
+.directory-topics h2 {
+  font:
+    400 21px "Russo One",
+    Impact,
+    sans-serif;
+  margin: 0 0 17px;
+}
+.directory-topics ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 25px;
+  row-gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.directory-topics li {
+  color: #506a7c;
+  font-size: 13px;
+  line-height: 1.45;
+  padding-left: 18px;
+  position: relative;
+}
+.directory-topics li::before {
+  content: "✓";
+  color: #f47830;
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+}
 .directory-layout {
   display: grid;
   grid-template-columns: 265px 1fr;
@@ -977,10 +1056,6 @@ img {
   font-size: 13px;
   margin: 0;
   max-width: 750px;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 .resource-actions {
   display: flex;
@@ -991,6 +1066,10 @@ img {
 .resource-actions a {
   font-weight: 800;
   color: #1d5e8a;
+  font-size: 12px;
+}
+.resource-actions > span {
+  color: #4f6474;
   font-size: 12px;
 }
 .resource-actions a:hover {
@@ -1227,6 +1306,9 @@ img {
   .directory-layout {
     grid-template-columns: 1fr;
   }
+  .directory-topics ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .filter-panel {
     position: static;
     display: grid;
@@ -1325,6 +1407,9 @@ img {
   .directory-intro {
     align-items: flex-start;
     flex-direction: column;
+  }
+  .directory-topics ul {
+    grid-template-columns: 1fr;
   }
   .filter-panel {
     display: block;

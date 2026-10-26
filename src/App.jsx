@@ -12,41 +12,43 @@ const workshops = [
   {
     week: "01",
     title: "Diabetes management",
-    time: "Health assessment + workshop",
+    time: "1-hour health assessment + 2-hour workshop",
+    hours: "Original program format: 5–8 p.m.",
     topics: [
-      "Understand your body and diabetes",
-      "Recognize signs and symptoms",
-      "Learn what your gauges mean",
+      "Features of your body and diabetes",
+      "Starting and managing your body and diabetes",
+      "Check your gauges: signs and symptoms",
     ],
   },
   {
     week: "02",
-    title: "Living well",
+    title: "Living well with diabetes",
     time: "Two-hour workshop",
+    hours: "Original program format: 6–8 p.m.",
     topics: [
-      "Build physical activity into daily life",
-      "Manage stress",
-      "Keep moving forward",
+      "Using all your gears: physical activity",
+      "Full throttle: stress management",
     ],
   },
   {
     week: "03",
     title: "Maintenance & prevention",
     time: "Two-hour workshop",
+    hours: "Original program format: 6–8 p.m.",
     topics: [
-      "Understand medication use",
-      "Prevent complications",
-      "Make the most of doctor visits",
+      "Keep your battery charged: medication use",
+      "Catastrophic failure: diabetes complications",
+      "Tune-ups and inspections: doctor visits",
     ],
   },
   {
     week: "04",
     title: "Eating well",
-    time: "Health assessment + workshop",
+    time: "1-hour health assessment + 2-hour workshop",
+    hours: "Original program format: 5–8 p.m.",
     topics: [
-      "Make nutrition work for you",
-      "Bring family and friends",
-      "Celebrate graduation",
+      "High-performance fuel: nutrition",
+      "Graduation lunch or dinner with family and friends",
     ],
   },
 ];
@@ -55,33 +57,63 @@ const gauges = [
   {
     icon: "icon-drop.svg",
     title: "Blood sugar",
-    detail: "Check your levels and learn what your readings mean.",
+    detail:
+      "For many nonpregnant adults, a common target is 80–130 mg/dL before meals and below 180 mg/dL 1–2 hours after starting a meal.",
+    source:
+      "https://diabetes.org/living-with-diabetes/treatment-care/checking-your-blood-sugar",
   },
   {
     icon: "icon-run.svg",
     title: "Movement",
-    detail: "Find ways to make physical activity part of your routine.",
+    detail:
+      "Start where you are and build up. A common goal is at least 150 minutes of moderate activity each week.",
+    source: "https://www.cdc.gov/diabetes/living-with/physical-activity.html",
   },
   {
     icon: "icon-stress.svg",
     title: "Stress",
-    detail: "Notice stressors and build healthy ways to cope.",
+    detail:
+      "Identify stressors, ask for support, and find positive ways to cope. Stress can affect blood sugar.",
+    source: "https://www.cdc.gov/diabetes/living-with/mental-health.html",
   },
   {
     icon: "icon-plate.svg",
     title: "Food & water",
-    detail: "Plan balanced meals and stay hydrated.",
+    detail:
+      "Plan regular, balanced meals and choose water over sugary drinks. Meal timing and fluid needs are personal.",
+    source:
+      "https://www.cdc.gov/diabetes/healthy-eating/diabetes-meal-planning.html",
   },
   {
     icon: "icon-pill.svg",
     title: "Medication",
-    detail: "Know when and how to take your medication.",
+    detail:
+      "Know when and how to take each medicine, and take it as prescribed by your care team.",
+    source: "https://www.cdc.gov/diabetes/treatment/index.html",
   },
   {
     icon: "icon-heart.svg",
     title: "Blood pressure",
-    detail: "Keep track of your blood pressure with your care team.",
+    detail:
+      "For adults, normal is below 120 systolic and below 80 diastolic. Repeated readings at 130–139 systolic or 80–89 diastolic are in the stage 1 high range.",
+    source:
+      "https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings",
   },
+];
+
+const directoryTopics = [
+  "Diabetes resources",
+  "Paying for medications",
+  "Health insurance",
+  "Paying bills",
+  "Food assistance",
+  "Jobs and unemployment benefits",
+  "Housing",
+  "Child care",
+  "Coping with stress",
+  "Relationship conflicts",
+  "Substance use support",
+  "Quitting smoking",
 ];
 
 const categories = [
@@ -114,6 +146,12 @@ function safeWebsite(value) {
   } catch {
     return null;
   }
+}
+
+function phoneHref(value) {
+  if (!/^\+?[\d(). -]+$/.test(value)) return null;
+  const digits = value.replace(/\D/g, "");
+  return digits.length >= 3 && digits.length <= 11 ? `tel:${digits}` : null;
 }
 
 function ScrollToTop() {
@@ -367,6 +405,7 @@ function Home() {
                 </div>
                 <h3>{workshop.title}</h3>
                 <p className="workshop-time">{workshop.time}</p>
+                <p className="workshop-hours">{workshop.hours}</p>
                 <ul>
                   {workshop.topics.map((topic) => (
                     <li key={topic}>{topic}</li>
@@ -377,7 +416,7 @@ function Home() {
           </div>
           <p className="workshop-footnote">
             Workshops are free. Family and friends are welcome at the graduation
-            session.
+            session. Confirm upcoming dates and times when registering.
           </p>
         </div>
       </section>
@@ -422,7 +461,21 @@ function Home() {
                   program.
                 </p>
               </div>
+              <div>
+                <span>04</span>
+                <p>
+                  Join Open Garage sessions to ask a diabetes educator questions
+                  about managing diabetes.
+                </p>
+              </div>
             </div>
+            <p className="about-evidence">
+              Greater awareness and better management of risk factors are
+              helping people with diabetes live longer with fewer complications.{" "}
+              <ExternalLink href="https://www.cdc.gov/diabetes/prevention-type-2/stop-diabetes-complications.html">
+                Learn more from the CDC ↗
+              </ExternalLink>
+            </p>
             <div className="about-callout">
               <img src={media("toolbox.png")} alt="Diabetes care toolbox" />
               <p>
@@ -442,15 +495,29 @@ function Home() {
             text="Like a dashboard, your body gives you useful signals. The program helps you understand them and talk with your care team."
             light
           />
+          <div className="speedometer-frame">
+            <img
+              src={media("speedometer.svg")}
+              alt="Speedometer illustration for checking your health gauges"
+            />
+          </div>
           <div className="gauge-grid">
             {gauges.map((gauge) => (
               <article className="gauge-card" key={gauge.title}>
                 <img src={media(gauge.icon)} alt="" />
                 <h3>{gauge.title}</h3>
                 <p>{gauge.detail}</p>
+                <ExternalLink href={gauge.source} className="gauge-source">
+                  Read the source ↗
+                </ExternalLink>
               </article>
             ))}
           </div>
+          <p className="gauge-guidance">
+            These are general examples, not personal treatment goals. Ask your
+            care team which targets are right for you. Each gauge links to its
+            source.
+          </p>
           <div className="gauge-bottom">
             <span>Learn more with the full program</span>
             <ExternalLink href={registerUrl}>
@@ -622,6 +689,17 @@ function Directory() {
               </span>
             </div>
           </div>
+          <section
+            className="directory-topics"
+            aria-labelledby="directory-topics-heading"
+          >
+            <h2 id="directory-topics-heading">What can you find help with?</h2>
+            <ul>
+              {directoryTopics.map((topic) => (
+                <li key={topic}>{topic}</li>
+              ))}
+            </ul>
+          </section>
           <div className="directory-layout">
             <aside className="filter-panel" aria-label="Filter resources">
               <h2>Find a resource</h2>
@@ -727,6 +805,7 @@ function Directory() {
 
 function ResourceCard({ item }) {
   const website = safeWebsite(item.website);
+  const dial = phoneHref(item.phone);
   const subtype =
     item.type_of_diabetes_resource ||
     item.type_everyday_living_resource ||
@@ -743,11 +822,13 @@ function ResourceCard({ item }) {
         <p className="resource-description">{item.description}</p>
       )}
       <div className="resource-actions">
-        {item.phone && (
-          <a href={`tel:${item.phone.replace(/[^+\d]/g, "")}`}>
+        {dial ? (
+          <a href={dial}>
             Call {item.phone} <span aria-hidden="true">↗</span>
           </a>
-        )}
+        ) : item.phone ? (
+          <span>Contact: {item.phone}</span>
+        ) : null}
         {item.email && (
           <a href={`mailto:${item.email}`}>
             Email <span aria-hidden="true">↗</span>
