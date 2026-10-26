@@ -304,6 +304,7 @@ function Home() {
   return (
     <>
       <section className="hero">
+        <div className="hero-photo" aria-hidden="true" />
         <div className="container hero-content">
           <h1>
             Don’t let diabetes <em>break you down.</em>
