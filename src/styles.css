@@ -253,48 +253,11 @@ img {
   background: #071d32;
   overflow: hidden;
 }
-.hero-photo {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      90deg,
-      #071d32 0%,
-      rgba(7, 29, 50, 0.98) 28%,
-      rgba(7, 29, 50, 0.6) 62%,
-      rgba(7, 29, 50, 0.18) 100%
-    ),
-    url("/media/home-bg.jpeg") center right/cover no-repeat;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  right: 15%;
-  top: -15%;
-  height: 130%;
-  width: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  transform: rotate(24deg);
-}
 .hero-content {
   position: relative;
   z-index: 1;
   padding-top: 70px;
   padding-bottom: 70px;
-}
-.hero-kicker {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: #ffc4a2;
-  font-weight: 800;
-  font-size: 12px;
-  letter-spacing: 0.18em;
-}
-.kicker-line {
-  width: 34px;
-  height: 2px;
-  background: #f47830;
 }
 .hero h1 {
   font:
@@ -302,7 +265,7 @@ img {
     Impact,
     sans-serif;
   max-width: 760px;
-  margin: 28px 0;
+  margin: 0 0 28px;
 }
 .hero h1 em,
 .about-copy h2 em {
@@ -353,17 +316,6 @@ img {
   place-items: center;
   color: #f47830;
   font-weight: 900;
-}
-.hero-side-label {
-  position: absolute;
-  right: 29px;
-  bottom: 80px;
-  z-index: 1;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: #c0d0dc;
 }
 .intro-strip {
   background: #f47830;
@@ -1232,14 +1184,6 @@ img {
   }
   .hero {
     min-height: 600px;
-  }
-  .hero-photo {
-    background:
-      linear-gradient(90deg, rgba(7, 29, 50, 0.98), rgba(7, 29, 50, 0.62)),
-      url("/media/home-bg.jpeg") center/cover;
-  }
-  .hero-side-label {
-    display: none;
   }
   .intro-strip-inner {
     flex-wrap: wrap;

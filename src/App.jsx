@@ -304,16 +304,7 @@ function Home() {
   return (
     <>
       <section className="hero">
-        <div
-          className="hero-photo"
-          role="img"
-          aria-label="Diabetes Garage program"
-        />
         <div className="container hero-content">
-          <span className="hero-kicker">
-            <span className="kicker-line" />
-            FREE WORKSHOPS · REAL-WORLD TOOLS
-          </span>
           <h1>
             Don’t let diabetes <em>break you down.</em>
           </h1>
@@ -339,7 +330,6 @@ function Home() {
             </span>
           </div>
         </div>
-        <div className="hero-side-label">YOUR HEALTH. YOUR ROAD AHEAD.</div>
       </section>
 
       <section className="intro-strip">
